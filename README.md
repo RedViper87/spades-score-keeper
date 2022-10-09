@@ -1,2 +1,2 @@
 # spades-score-keeper
-An automatic score keeper for Spades, both desktop and mobile available.
+HTML/CSS/JS for an automatic score keeper for Spades, both desktop and mobile available.
