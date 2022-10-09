@@ -1,0 +1,2987 @@
+<html>
+
+<style>
+/********** CSS Styles **********/
+/* Element Styles */
+body{
+    background-color: rgb(40, 38, 38);
+}
+input{
+    border: 2px solid rgb(82,82,82);
+    border-radius: 5px;
+}
+select{
+    appearance: none;
+    border: 2px solid rgb(82,82,82);
+    border-radius: 5px;
+    text-align: center;
+}
+/* Class Styles */
+.content{
+    max-width: 62rem;
+    margin: auto;
+}
+.flexRow{
+    /* border: 1px solid red !important; */
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    width: 60rem;
+}
+.nameBox{
+    background-color: white;
+    font-weight: bold;
+    height: 2.25rem;
+    width: 8.7rem;
+    text-align: center;
+}
+.numberBox{
+    background-color: white;
+    font-weight: bold;
+    height: 2.25rem;
+    width: 2.9rem;
+    text-align: center;
+}
+.rowTitle{
+    background-color: rgb(153,153,153);
+    height: 2.25rem;
+    width: 7rem;
+    text-align: center;
+}
+.titleBox{
+    background-color: rgb(153,153,153);
+    height: 2.25rem;
+    width: 2.9rem;
+    text-align: center;
+}
+.totalBox{
+    height: 2.25rem;
+    width: 8.7rem;
+    text-align: center;
+}
+.greenBox{
+    background-color: rgb(151,230,151);
+}
+.purpleBox{
+    background-color: rgb(197,167,252);
+}
+.titleRow{
+    height: 7rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    justify-content: center;
+}
+.totalClass{
+    background-color: black;
+    color: rgb(0, 184, 0);
+    font-weight: bold;
+}
+/* ID styles */
+#Title{
+    color: white;
+    font-size: 5rem;
+    margin-bottom: 0.1rem;
+}
+
+</style>
+
+<body class="content">
+
+    <!-- Main Body Elements -->
+    <div class="flexRow titleRow">
+        <b id="Title">Spades</b>
+    </div>
+    <div class="flexRow">
+        <input type="text" class="rowTitle" readonly value="Name:">
+        <input type="text" class="nameBox greenBox" placeholder="Player 1">
+        <input type="text" class="nameBox purpleBox" placeholder="Player 2">
+        <input type="text" class="nameBox greenBox" placeholder="Player 3">
+        <input type="text" class="nameBox purpleBox" placeholder="Player 4">
+        <input type="text" class="nameBox greenBox" placeholder="Player 5">
+        <input type="text" class="nameBox purpleBox" placeholder="Player 6">
+    </div>
+    <div class="flexRow">
+        <input type="text" class="rowTitle" readonly value="Books:">
+        <input type="text" class="titleBox" value="Bid" readonly>
+        <input type="text" class="titleBox" value="Won" readonly>
+        <input type="text" class="titleBox" value="Score" readonly>
+        <input type="text" class="titleBox" value="Bid" readonly>
+        <input type="text" class="titleBox" value="Won" readonly>
+        <input type="text" class="titleBox" value="Score" readonly>
+        <input type="text" class="titleBox" value="Bid" readonly>
+        <input type="text" class="titleBox" value="Won" readonly>
+        <input type="text" class="titleBox" value="Score" readonly>
+        <input type="text" class="titleBox" value="Bid" readonly>
+        <input type="text" class="titleBox" value="Won" readonly>
+        <input type="text" class="titleBox" value="Score" readonly>
+        <input type="text" class="titleBox" value="Bid" readonly>
+        <input type="text" class="titleBox" value="Won" readonly>
+        <input type="text" class="titleBox" value="Score" readonly>
+        <input type="text" class="titleBox" value="Bid" readonly>
+        <input type="text" class="titleBox" value="Won" readonly>
+        <input type="text" class="titleBox" value="Score" readonly>
+    </div>
+    <div class="flexRow">
+        <input type="text" class="rowTitle" readonly value="Game 1">
+        <select id="p1g1-bid" name="p1g1-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p1g1-won" name="p1g1-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p1g1-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p2g1-bid" name="p2g1-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p2g1-won" name="p2g1-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p2g1-score" type="number" class="numberBox purpleBox" readonly>
+        <select id="p3g1-bid" name="p3g1-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p3g1-won" name="p3g1-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p3g1-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p4g1-bid" name="p4g1-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p4g1-won" name="p4g1-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p4g1-score" type="number" class="numberBox purpleBox" readonly>
+        <select id="p5g1-bid" name="p5g1-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p5g1-won" name="p5g1-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p5g1-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p6g1-bid" name="p6g1-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p6g1-won" name="p6g1-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p6g1-score" type="number" class="numberBox purpleBox" readonly>
+    </div>
+    <div class="flexRow">
+        <input type="text" class="rowTitle" readonly value="Game 2">
+        <select id="p1g2-bid" name="p1g2-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p1g2-won" name="p1g2-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p1g2-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p2g2-bid" name="p2g2-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p2g2-won" name="p2g2-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p2g2-score" type="number" class="numberBox purpleBox" readonly>
+        <select id="p3g2-bid" name="p3g2-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p3g2-won" name="p3g2-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p3g2-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p4g2-bid" name="p4g2-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p4g2-won" name="p4g2-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p4g2-score" type="number" class="numberBox purpleBox" readonly>
+        <select id="p5g2-bid" name="p5g2-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p5g2-won" name="p5g2-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p5g2-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p6g2-bid" name="p6g2-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p6g2-won" name="p6g2-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p6g2-score" type="number" class="numberBox purpleBox" readonly>
+    </div>
+    <div class="flexRow">
+        <input type="text" class="rowTitle" readonly value="Game 3">
+        <select id="p1g3-bid" name="p1g3-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p1g3-won" name="p1g3-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p1g3-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p2g3-bid" name="p2g3-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p2g3-won" name="p2g3-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p2g3-score" type="number" class="numberBox purpleBox" readonly>
+        <select id="p3g3-bid" name="p3g3-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p3g3-won" name="p3g3-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p3g3-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p4g3-bid" name="p4g3-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p4g3-won" name="p4g3-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p4g3-score" type="number" class="numberBox purpleBox" readonly>
+        <select id="p5g3-bid" name="p5g3-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p5g3-won" name="p5g3-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p5g3-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p6g3-bid" name="p6g3-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p6g3-won" name="p6g3-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p6g3-score" type="number" class="numberBox purpleBox" readonly>
+    </div>
+    <div class="flexRow">
+        <input type="text" class="rowTitle" readonly value="Game 4">
+        <select id="p1g4-bid" name="p1g4-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p1g4-won" name="p1g4-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p1g4-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p2g4-bid" name="p2g4-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p2g4-won" name="p2g4-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p2g4-score" type="number" class="numberBox purpleBox" readonly>
+        <select id="p3g4-bid" name="p3g4-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p3g4-won" name="p3g4-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p3g4-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p4g4-bid" name="p4g4-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p4g4-won" name="p4g4-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p4g4-score" type="number" class="numberBox purpleBox" readonly>
+        <select id="p5g4-bid" name="p5g4-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p5g4-won" name="p5g4-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p5g4-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p6g4-bid" name="p6g4-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p6g4-won" name="p6g4-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p6g4-score" type="number" class="numberBox purpleBox" readonly>
+    </div>
+    <div class="flexRow">
+        <input type="text" class="rowTitle" readonly value="Game 5">
+        <select id="p1g5-bid" name="p1g5-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p1g5-won" name="p1g5-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p1g5-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p2g5-bid" name="p2g5-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p2g5-won" name="p2g5-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p2g5-score" type="number" class="numberBox purpleBox" readonly>
+        <select id="p3g5-bid" name="p3g5-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p3g5-won" name="p3g5-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p3g5-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p4g5-bid" name="p4g5-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p4g5-won" name="p4g5-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p4g5-score" type="number" class="numberBox purpleBox" readonly>
+        <select id="p5g5-bid" name="p5g5-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p5g5-won" name="p5g5-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p5g5-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p6g5-bid" name="p6g5-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p6g5-won" name="p6g5-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p6g5-score" type="number" class="numberBox purpleBox" readonly>
+    </div>
+    <div class="flexRow">
+        <input type="text" class="rowTitle" readonly value="Game 6">
+        <select id="p1g6-bid" name="p1g6-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p1g6-won" name="p1g6-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p1g6-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p2g6-bid" name="p2g6-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p2g6-won" name="p2g6-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p2g6-score" type="number" class="numberBox purpleBox" readonly>
+        <select id="p3g6-bid" name="p3g6-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p3g6-won" name="p3g6-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p3g6-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p4g6-bid" name="p4g6-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p4g6-won" name="p4g6-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p4g6-score" type="number" class="numberBox purpleBox" readonly>
+        <select id="p5g6-bid" name="p5g6-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p5g6-won" name="p5g6-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p5g6-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p6g6-bid" name="p6g6-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p6g6-won" name="p6g6-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p6g6-score" type="number" class="numberBox purpleBox" readonly>
+    </div>
+    <div class="flexRow">
+        <input type="text" class="rowTitle" readonly value="Game 7">
+        <select id="p1g7-bid" name="p1g7-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p1g7-won" name="p1g7-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p1g7-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p2g7-bid" name="p2g7-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p2g7-won" name="p2g7-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p2g7-score" type="number" class="numberBox purpleBox" readonly>
+        <select id="p3g7-bid" name="p3g7-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p3g7-won" name="p3g7-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p3g7-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p4g7-bid" name="p4g7-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p4g7-won" name="p4g7-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p4g7-score" type="number" class="numberBox purpleBox" readonly>
+        <select id="p5g7-bid" name="p5g7-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p5g7-won" name="p5g7-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p5g7-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p6g7-bid" name="p6g7-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p6g7-won" name="p6g7-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p6g7-score" type="number" class="numberBox purpleBox" readonly>
+    </div>
+    <div class="flexRow">
+        <input type="text" class="rowTitle" readonly value="Game 8">
+        <select id="p1g8-bid" name="p1g8-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p1g8-won" name="p1g8-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p1g8-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p2g8-bid" name="p2g8-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p2g8-won" name="p2g8-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p2g8-score" type="number" class="numberBox purpleBox" readonly>
+        <select id="p3g8-bid" name="p3g8-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p3g8-won" name="p3g8-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p3g8-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p4g8-bid" name="p4g8-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p4g8-won" name="p4g8-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p4g8-score" type="number" class="numberBox purpleBox" readonly>
+        <select id="p5g8-bid" name="p5g8-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p5g8-won" name="p5g8-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p5g8-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p6g8-bid" name="p6g8-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p6g8-won" name="p6g8-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p6g8-score" type="number" class="numberBox purpleBox" readonly>
+    </div>
+    <div class="flexRow">
+        <input type="text" class="rowTitle" readonly value="Game 9">
+        <select id="p1g9-bid" name="p1g9-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p1g9-won" name="p1g9-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p1g9-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p2g9-bid" name="p2g9-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p2g9-won" name="p2g9-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p2g9-score" type="number" class="numberBox purpleBox" readonly>
+        <select id="p3g9-bid" name="p3g9-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p3g9-won" name="p3g9-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p3g9-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p4g9-bid" name="p4g9-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p4g9-won" name="p4g9-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p4g9-score" type="number" class="numberBox purpleBox" readonly>
+        <select id="p5g9-bid" name="p5g9-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p5g9-won" name="p5g9-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p5g9-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p6g9-bid" name="p6g9-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p6g9-won" name="p6g9-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p6g9-score" type="number" class="numberBox purpleBox" readonly>
+    </div>
+    <div class="flexRow">
+        <input type="text" class="rowTitle" readonly value="Game 10">
+        <select id="p1g10-bid" name="p1g10-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p1g10-won" name="p1g10-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p1g10-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p2g10-bid" name="p2g10-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p2g10-won" name="p2g10-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p2g10-score" type="number" class="numberBox purpleBox" readonly>
+        <select id="p3g10-bid" name="p3g10-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p3g10-won" name="p3g10-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p3g10-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p4g10-bid" name="p4g10-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p4g10-won" name="p4g10-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p4g10-score" type="number" class="numberBox purpleBox" readonly>
+        <select id="p5g10-bid" name="p5g10-bid" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p5g10-won" name="p5g10-won" class="numberBox greenBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p5g10-score" type="number" class="numberBox greenBox" readonly>
+        <select id="p6g10-bid" name="p6g10-bid" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <select id="p6g10-won" name="p6g10-won" class="numberBox purpleBox" onchange="calcScores()">
+            <option disabled selected value></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+        </select>
+        <input id="p6g10-score" type="number" class="numberBox purpleBox" readonly>
+    </div>
+    <div class="flexRow">
+        <input type="text" class="rowTitle totalClass" readonly value="TOTALS:">
+        <input id="p1-total" type="number" class="totalBox purpleBox" readonly value="0">
+        <input id="p2-total" type="number" class="totalBox greenBox" readonly value="0">
+        <input id="p3-total" type="number" class="totalBox purpleBox" readonly value="0">
+        <input id="p4-total" type="number" class="totalBox greenBox" readonly value="0">
+        <input id="p5-total" type="number" class="totalBox purpleBox" readonly value="0">
+        <input id="p6-total" type="number" class="totalBox greenBox" readonly value="0">
+    </div>
+
+</body>
+
+<script>
+
+    // JavaScript code goes here
+    // **********************************************************Games Scoring
+    function calcScores() {
+        p1_scores()
+        p2_scores()
+        p3_scores()
+        p4_scores()
+        p5_scores()
+        p6_scores()
+    }
+    // Player 1
+    function p1_scores() {
+        var p1total = document.getElementById("p1-total")
+        var tempP1total = 0
+        // Game 1
+        var p1g1bid = document.getElementById("p1g1-bid")
+        var p1g1won = document.getElementById("p1g1-won")
+        var p1g1score = document.getElementById("p1g1-score")
+        if (p1g1bid.value.length > 0 && p1g1won.value.length > 0) {
+            var tempResult1 = 0;
+            if (parseInt(p1g1bid.value) <= parseInt(p1g1won.value)) {
+                tempResult1 = parseInt(p1g1bid.value) * parseInt(10) + parseInt(p1g1won.value) - parseInt(p1g1bid.value)
+            }
+            p1g1score.value = tempResult1
+        }
+        // Game 2
+        var p1g2bid = document.getElementById("p1g2-bid")
+        var p1g2won = document.getElementById("p1g2-won")
+        var p1g2score = document.getElementById("p1g2-score")
+        if (p1g2bid.value.length > 0 && p1g2won.value.length > 0) {
+            var tempResult2 = 0;
+            if (parseInt(p1g2bid.value) <= parseInt(p1g2won.value)) {
+                tempResult2 = parseInt(p1g2bid.value) * parseInt(10) + parseInt(p1g2won.value) - parseInt(p1g2bid.value)
+            }
+            p1g2score.value = tempResult2
+        }
+        // Game 3
+        var p1g3bid = document.getElementById("p1g3-bid")
+        var p1g3won = document.getElementById("p1g3-won")
+        var p1g3score = document.getElementById("p1g3-score")
+        if (p1g3bid.value.length > 0 && p1g3won.value.length > 0) {
+            var tempResult3 = 0;
+            if (parseInt(p1g3bid.value) <= parseInt(p1g3won.value)) {
+                tempResult3 = parseInt(p1g3bid.value) * parseInt(10) + parseInt(p1g3won.value) - parseInt(p1g3bid.value)
+            }
+            p1g3score.value = tempResult3
+        }
+        // Game 4
+        var p1g4bid = document.getElementById("p1g4-bid")
+        var p1g4won = document.getElementById("p1g4-won")
+        var p1g4score = document.getElementById("p1g4-score")
+        if (p1g4bid.value.length > 0 && p1g4won.value.length > 0) {
+            var tempResult4 = 0;
+            if (parseInt(p1g4bid.value) <= parseInt(p1g4won.value)) {
+                tempResult4 = parseInt(p1g4bid.value) * parseInt(10) + parseInt(p1g4won.value) - parseInt(p1g4bid.value)
+            }
+            p1g4score.value = tempResult4
+        }
+        // Game 5
+        var p1g5bid = document.getElementById("p1g5-bid")
+        var p1g5won = document.getElementById("p1g5-won")
+        var p1g5score = document.getElementById("p1g5-score")
+        if (p1g5bid.value.length > 0 && p1g5won.value.length > 0) {
+            var tempResult5 = 0;
+            if (parseInt(p1g5bid.value) <= parseInt(p1g5won.value)) {
+                tempResult5 = parseInt(p1g5bid.value) * parseInt(10) + parseInt(p1g5won.value) - parseInt(p1g5bid.value)
+            }
+            p1g5score.value = tempResult5
+        }
+        // Game 6
+        var p1g6bid = document.getElementById("p1g6-bid")
+        var p1g6won = document.getElementById("p1g6-won")
+        var p1g6score = document.getElementById("p1g6-score")
+        if (p1g6bid.value.length > 0 && p1g6won.value.length > 0) {
+            var tempResult6 = 0;
+            if (parseInt(p1g6bid.value) <= parseInt(p1g6won.value)) {
+                tempResult6 = parseInt(p1g6bid.value) * parseInt(10) + parseInt(p1g6won.value) - parseInt(p1g6bid.value)
+            }
+            p1g6score.value = tempResult6
+        }
+        // Game 7
+        var p1g7bid = document.getElementById("p1g7-bid")
+        var p1g7won = document.getElementById("p1g7-won")
+        var p1g7score = document.getElementById("p1g7-score")
+        if (p1g7bid.value.length > 0 && p1g7won.value.length > 0) {
+            var tempResult7 = 0;
+            if (parseInt(p1g7bid.value) <= parseInt(p1g7won.value)) {
+                tempResult7 = parseInt(p1g7bid.value) * parseInt(10) + parseInt(p1g7won.value) - parseInt(p1g7bid.value)
+            }
+            p1g7score.value = tempResult7
+        }
+        // Game 8
+        var p1g8bid = document.getElementById("p1g8-bid")
+        var p1g8won = document.getElementById("p1g8-won")
+        var p1g8score = document.getElementById("p1g8-score")
+        if (p1g8bid.value.length > 0 && p1g8won.value.length > 0) {
+            var tempResult8 = 0;
+            if (parseInt(p1g8bid.value) <= parseInt(p1g8won.value)) {
+                tempResult8 = parseInt(p1g8bid.value) * parseInt(10) + parseInt(p1g8won.value) - parseInt(p1g8bid.value)
+            }
+            p1g8score.value = tempResult8
+        }
+        // Game 9
+        var p1g9bid = document.getElementById("p1g9-bid")
+        var p1g9won = document.getElementById("p1g9-won")
+        var p1g9score = document.getElementById("p1g9-score")
+        if (p1g9bid.value.length > 0 && p1g9won.value.length > 0) {
+            var tempResult9 = 0;
+            if (parseInt(p1g9bid.value) <= parseInt(p1g9won.value)) {
+                tempResult9 = parseInt(p1g9bid.value) * parseInt(10) + parseInt(p1g9won.value) - parseInt(p1g9bid.value)
+            }
+            p1g9score.value = tempResult9
+        }
+        // Game 10
+        var p1g10bid = document.getElementById("p1g10-bid")
+        var p1g10won = document.getElementById("p1g10-won")
+        var p1g10score = document.getElementById("p1g10-score")
+        if (p1g10bid.value.length > 0 && p1g10won.value.length > 0) {
+            var tempResult10 = 0;
+            if (parseInt(p1g10bid.value) <= parseInt(p1g10won.value)) {
+                tempResult10 = parseInt(p1g10bid.value) * parseInt(10) + parseInt(p1g10won.value) - parseInt(p1g10bid.value)
+            }
+            p1g10score.value = tempResult10
+        }
+        
+        // P1 Total
+        p1total.value = (p1g1score.value.length > 0 ? parseInt(p1g1score.value) : parseInt(0)) + 
+                        (p1g2score.value.length > 0 ? parseInt(p1g2score.value) : parseInt(0)) +
+                        (p1g3score.value.length > 0 ? parseInt(p1g3score.value) : parseInt(0)) +
+                        (p1g4score.value.length > 0 ? parseInt(p1g4score.value) : parseInt(0)) +
+                        (p1g5score.value.length > 0 ? parseInt(p1g5score.value) : parseInt(0)) +
+                        (p1g6score.value.length > 0 ? parseInt(p1g6score.value) : parseInt(0)) +
+                        (p1g7score.value.length > 0 ? parseInt(p1g7score.value) : parseInt(0)) +
+                        (p1g8score.value.length > 0 ? parseInt(p1g8score.value) : parseInt(0)) +
+                        (p1g9score.value.length > 0 ? parseInt(p1g9score.value) : parseInt(0)) +
+                        (p1g10score.value.length > 0 ? parseInt(p1g10score.value) : parseInt(0))
+    }
+
+    // Player 2
+    function p2_scores() {
+        var p2total = document.getElementById("p2-total")
+        var tempP2total = 0
+        // Game 1
+        var p2g1bid = document.getElementById("p2g1-bid")
+        var p2g1won = document.getElementById("p2g1-won")
+        var p2g1score = document.getElementById("p2g1-score")
+        if (p2g1bid.value.length > 0 && p2g1won.value.length > 0) {
+            var tempResult1 = 0;
+            if (parseInt(p2g1bid.value) <= parseInt(p2g1won.value)) {
+                tempResult1 = parseInt(p2g1bid.value) * parseInt(10) + parseInt(p2g1won.value) - parseInt(p2g1bid.value)
+            }
+            p2g1score.value = tempResult1
+        }
+        // Game 2
+        var p2g2bid = document.getElementById("p2g2-bid")
+        var p2g2won = document.getElementById("p2g2-won")
+        var p2g2score = document.getElementById("p2g2-score")
+        if (p2g2bid.value.length > 0 && p2g2won.value.length > 0) {
+            var tempResult2 = 0;
+            if (parseInt(p2g2bid.value) <= parseInt(p2g2won.value)) {
+                tempResult2 = parseInt(p2g2bid.value) * parseInt(10) + parseInt(p2g2won.value) - parseInt(p2g2bid.value)
+            }
+            p2g2score.value = tempResult2
+        }
+        // Game 3
+        var p2g3bid = document.getElementById("p2g3-bid")
+        var p2g3won = document.getElementById("p2g3-won")
+        var p2g3score = document.getElementById("p2g3-score")
+        if (p2g3bid.value.length > 0 && p2g3won.value.length > 0) {
+            var tempResult3 = 0;
+            if (parseInt(p2g3bid.value) <= parseInt(p2g3won.value)) {
+                tempResult3 = parseInt(p2g3bid.value) * parseInt(10) + parseInt(p2g3won.value) - parseInt(p2g3bid.value)
+            }
+            p2g3score.value = tempResult3
+        }
+        // Game 4
+        var p2g4bid = document.getElementById("p2g4-bid")
+        var p2g4won = document.getElementById("p2g4-won")
+        var p2g4score = document.getElementById("p2g4-score")
+        if (p2g4bid.value.length > 0 && p2g4won.value.length > 0) {
+            var tempResult4 = 0;
+            if (parseInt(p2g4bid.value) <= parseInt(p2g4won.value)) {
+                tempResult4 = parseInt(p2g4bid.value) * parseInt(10) + parseInt(p2g4won.value) - parseInt(p2g4bid.value)
+            }
+            p2g4score.value = tempResult4
+        }
+        // Game 5
+        var p2g5bid = document.getElementById("p2g5-bid")
+        var p2g5won = document.getElementById("p2g5-won")
+        var p2g5score = document.getElementById("p2g5-score")
+        if (p2g5bid.value.length > 0 && p2g5won.value.length > 0) {
+            var tempResult5 = 0;
+            if (parseInt(p2g5bid.value) <= parseInt(p2g5won.value)) {
+                tempResult5 = parseInt(p2g5bid.value) * parseInt(10) + parseInt(p2g5won.value) - parseInt(p2g5bid.value)
+            }
+            p2g5score.value = tempResult5
+        }
+        // Game 6
+        var p2g6bid = document.getElementById("p2g6-bid")
+        var p2g6won = document.getElementById("p2g6-won")
+        var p2g6score = document.getElementById("p2g6-score")
+        if (p2g6bid.value.length > 0 && p2g6won.value.length > 0) {
+            var tempResult6 = 0;
+            if (parseInt(p2g6bid.value) <= parseInt(p2g6won.value)) {
+                tempResult6 = parseInt(p2g6bid.value) * parseInt(10) + parseInt(p2g6won.value) - parseInt(p2g6bid.value)
+            }
+            p2g6score.value = tempResult6
+        }
+        // Game 7
+        var p2g7bid = document.getElementById("p2g7-bid")
+        var p2g7won = document.getElementById("p2g7-won")
+        var p2g7score = document.getElementById("p2g7-score")
+        if (p2g7bid.value.length > 0 && p2g7won.value.length > 0) {
+            var tempResult7 = 0;
+            if (parseInt(p2g7bid.value) <= parseInt(p2g7won.value)) {
+                tempResult7 = parseInt(p2g7bid.value) * parseInt(10) + parseInt(p2g7won.value) - parseInt(p2g7bid.value)
+            }
+            p2g7score.value = tempResult7
+        }
+        // Game 8
+        var p2g8bid = document.getElementById("p2g8-bid")
+        var p2g8won = document.getElementById("p2g8-won")
+        var p2g8score = document.getElementById("p2g8-score")
+        if (p2g8bid.value.length > 0 && p2g8won.value.length > 0) {
+            var tempResult8 = 0;
+            if (parseInt(p2g8bid.value) <= parseInt(p2g8won.value)) {
+                tempResult8 = parseInt(p2g8bid.value) * parseInt(10) + parseInt(p2g8won.value) - parseInt(p2g8bid.value)
+            }
+            p2g8score.value = tempResult8
+        }
+        // Game 9
+        var p2g9bid = document.getElementById("p2g9-bid")
+        var p2g9won = document.getElementById("p2g9-won")
+        var p2g9score = document.getElementById("p2g9-score")
+        if (p2g9bid.value.length > 0 && p2g9won.value.length > 0) {
+            var tempResult9 = 0;
+            if (parseInt(p2g9bid.value) <= parseInt(p2g9won.value)) {
+                tempResult9 = parseInt(p2g9bid.value) * parseInt(10) + parseInt(p2g9won.value) - parseInt(p2g9bid.value)
+            }
+            p2g9score.value = tempResult9
+        }
+        // Game 10
+        var p2g10bid = document.getElementById("p2g10-bid")
+        var p2g10won = document.getElementById("p2g10-won")
+        var p2g10score = document.getElementById("p2g10-score")
+        if (p2g10bid.value.length > 0 && p2g10won.value.length > 0) {
+            var tempResult10 = 0;
+            if (parseInt(p2g10bid.value) <= parseInt(p2g10won.value)) {
+                tempResult10 = parseInt(p2g10bid.value) * parseInt(10) + parseInt(p2g10won.value) - parseInt(p2g10bid.value)
+            }
+            p2g10score.value = tempResult10
+        }
+        
+        // P2 Total
+        p2total.value = (p2g1score.value.length > 0 ? parseInt(p2g1score.value) : parseInt(0)) + 
+                        (p2g2score.value.length > 0 ? parseInt(p2g2score.value) : parseInt(0)) +
+                        (p2g3score.value.length > 0 ? parseInt(p2g3score.value) : parseInt(0)) +
+                        (p2g4score.value.length > 0 ? parseInt(p2g4score.value) : parseInt(0)) +
+                        (p2g5score.value.length > 0 ? parseInt(p2g5score.value) : parseInt(0)) +
+                        (p2g6score.value.length > 0 ? parseInt(p2g6score.value) : parseInt(0)) +
+                        (p2g7score.value.length > 0 ? parseInt(p2g7score.value) : parseInt(0)) +
+                        (p2g8score.value.length > 0 ? parseInt(p2g8score.value) : parseInt(0)) +
+                        (p2g9score.value.length > 0 ? parseInt(p2g9score.value) : parseInt(0)) +
+                        (p2g10score.value.length > 0 ? parseInt(p2g10score.value) : parseInt(0))
+    }
+
+    // Player 3
+    function p3_scores() {
+        var p3total = document.getElementById("p3-total")
+        var tempP3total = 0
+        // Game 1
+        var p3g1bid = document.getElementById("p3g1-bid")
+        var p3g1won = document.getElementById("p3g1-won")
+        var p3g1score = document.getElementById("p3g1-score")
+        if (p3g1bid.value.length > 0 && p3g1won.value.length > 0) {
+            var tempResult1 = 0;
+            if (parseInt(p3g1bid.value) <= parseInt(p3g1won.value)) {
+                tempResult1 = parseInt(p3g1bid.value) * parseInt(10) + parseInt(p3g1won.value) - parseInt(p3g1bid.value)
+            }
+            p3g1score.value = tempResult1
+        }
+        // Game 2
+        var p3g2bid = document.getElementById("p3g2-bid")
+        var p3g2won = document.getElementById("p3g2-won")
+        var p3g2score = document.getElementById("p3g2-score")
+        if (p3g2bid.value.length > 0 && p3g2won.value.length > 0) {
+            var tempResult2 = 0;
+            if (parseInt(p3g2bid.value) <= parseInt(p3g2won.value)) {
+                tempResult2 = parseInt(p3g2bid.value) * parseInt(10) + parseInt(p3g2won.value) - parseInt(p3g2bid.value)
+            }
+            p3g2score.value = tempResult2
+        }
+        // Game 3
+        var p3g3bid = document.getElementById("p3g3-bid")
+        var p3g3won = document.getElementById("p3g3-won")
+        var p3g3score = document.getElementById("p3g3-score")
+        if (p3g3bid.value.length > 0 && p3g3won.value.length > 0) {
+            var tempResult3 = 0;
+            if (parseInt(p3g3bid.value) <= parseInt(p3g3won.value)) {
+                tempResult3 = parseInt(p3g3bid.value) * parseInt(10) + parseInt(p3g3won.value) - parseInt(p3g3bid.value)
+            }
+            p3g3score.value = tempResult3
+        }
+        // Game 4
+        var p3g4bid = document.getElementById("p3g4-bid")
+        var p3g4won = document.getElementById("p3g4-won")
+        var p3g4score = document.getElementById("p3g4-score")
+        if (p3g4bid.value.length > 0 && p3g4won.value.length > 0) {
+            var tempResult4 = 0;
+            if (parseInt(p3g4bid.value) <= parseInt(p3g4won.value)) {
+                tempResult4 = parseInt(p3g4bid.value) * parseInt(10) + parseInt(p3g4won.value) - parseInt(p3g4bid.value)
+            }
+            p3g4score.value = tempResult4
+        }
+        // Game 5
+        var p3g5bid = document.getElementById("p3g5-bid")
+        var p3g5won = document.getElementById("p3g5-won")
+        var p3g5score = document.getElementById("p3g5-score")
+        if (p3g5bid.value.length > 0 && p3g5won.value.length > 0) {
+            var tempResult5 = 0;
+            if (parseInt(p3g5bid.value) <= parseInt(p3g5won.value)) {
+                tempResult5 = parseInt(p3g5bid.value) * parseInt(10) + parseInt(p3g5won.value) - parseInt(p3g5bid.value)
+            }
+            p3g5score.value = tempResult5
+        }
+        // Game 6
+        var p3g6bid = document.getElementById("p3g6-bid")
+        var p3g6won = document.getElementById("p3g6-won")
+        var p3g6score = document.getElementById("p3g6-score")
+        if (p3g6bid.value.length > 0 && p3g6won.value.length > 0) {
+            var tempResult6 = 0;
+            if (parseInt(p3g6bid.value) <= parseInt(p3g6won.value)) {
+                tempResult6 = parseInt(p3g6bid.value) * parseInt(10) + parseInt(p3g6won.value) - parseInt(p3g6bid.value)
+            }
+            p3g6score.value = tempResult6
+        }
+        // Game 7
+        var p3g7bid = document.getElementById("p3g7-bid")
+        var p3g7won = document.getElementById("p3g7-won")
+        var p3g7score = document.getElementById("p3g7-score")
+        if (p3g7bid.value.length > 0 && p3g7won.value.length > 0) {
+            var tempResult7 = 0;
+            if (parseInt(p3g7bid.value) <= parseInt(p3g7won.value)) {
+                tempResult7 = parseInt(p3g7bid.value) * parseInt(10) + parseInt(p3g7won.value) - parseInt(p3g7bid.value)
+            }
+            p3g7score.value = tempResult7
+        }
+        // Game 8
+        var p3g8bid = document.getElementById("p3g8-bid")
+        var p3g8won = document.getElementById("p3g8-won")
+        var p3g8score = document.getElementById("p3g8-score")
+        if (p3g8bid.value.length > 0 && p3g8won.value.length > 0) {
+            var tempResult8 = 0;
+            if (parseInt(p3g8bid.value) <= parseInt(p3g8won.value)) {
+                tempResult8 = parseInt(p3g8bid.value) * parseInt(10) + parseInt(p3g8won.value) - parseInt(p3g8bid.value)
+            }
+            p3g8score.value = tempResult8
+        }
+        // Game 9
+        var p3g9bid = document.getElementById("p3g9-bid")
+        var p3g9won = document.getElementById("p3g9-won")
+        var p3g9score = document.getElementById("p3g9-score")
+        if (p3g9bid.value.length > 0 && p3g9won.value.length > 0) {
+            var tempResult9 = 0;
+            if (parseInt(p3g9bid.value) <= parseInt(p3g9won.value)) {
+                tempResult9 = parseInt(p3g9bid.value) * parseInt(10) + parseInt(p3g9won.value) - parseInt(p3g9bid.value)
+            }
+            p3g9score.value = tempResult9
+        }
+        // Game 10
+        var p3g10bid = document.getElementById("p3g10-bid")
+        var p3g10won = document.getElementById("p3g10-won")
+        var p3g10score = document.getElementById("p3g10-score")
+        if (p3g10bid.value.length > 0 && p3g10won.value.length > 0) {
+            var tempResult10 = 0;
+            if (parseInt(p3g10bid.value) <= parseInt(p3g10won.value)) {
+                tempResult10 = parseInt(p3g10bid.value) * parseInt(10) + parseInt(p3g10won.value) - parseInt(p3g10bid.value)
+            }
+            p3g10score.value = tempResult10
+        }
+        
+        // P3 Total
+        p3total.value = (p3g1score.value.length > 0 ? parseInt(p3g1score.value) : parseInt(0)) + 
+                        (p3g2score.value.length > 0 ? parseInt(p3g2score.value) : parseInt(0)) +
+                        (p3g3score.value.length > 0 ? parseInt(p3g3score.value) : parseInt(0)) +
+                        (p3g4score.value.length > 0 ? parseInt(p3g4score.value) : parseInt(0)) +
+                        (p3g5score.value.length > 0 ? parseInt(p3g5score.value) : parseInt(0)) +
+                        (p3g6score.value.length > 0 ? parseInt(p3g6score.value) : parseInt(0)) +
+                        (p3g7score.value.length > 0 ? parseInt(p3g7score.value) : parseInt(0)) +
+                        (p3g8score.value.length > 0 ? parseInt(p3g8score.value) : parseInt(0)) +
+                        (p3g9score.value.length > 0 ? parseInt(p3g9score.value) : parseInt(0)) +
+                        (p3g10score.value.length > 0 ? parseInt(p3g10score.value) : parseInt(0))
+    }
+
+    // Player 4
+    function p4_scores() {
+        var p4total = document.getElementById("p4-total")
+        var tempP4total = 0
+        // Game 1
+        var p4g1bid = document.getElementById("p4g1-bid")
+        var p4g1won = document.getElementById("p4g1-won")
+        var p4g1score = document.getElementById("p4g1-score")
+        if (p4g1bid.value.length > 0 && p4g1won.value.length > 0) {
+            var tempResult1 = 0;
+            if (parseInt(p4g1bid.value) <= parseInt(p4g1won.value)) {
+                tempResult1 = parseInt(p4g1bid.value) * parseInt(10) + parseInt(p4g1won.value) - parseInt(p4g1bid.value)
+            }
+            p4g1score.value = tempResult1
+        }
+        // Game 2
+        var p4g2bid = document.getElementById("p4g2-bid")
+        var p4g2won = document.getElementById("p4g2-won")
+        var p4g2score = document.getElementById("p4g2-score")
+        if (p4g2bid.value.length > 0 && p4g2won.value.length > 0) {
+            var tempResult2 = 0;
+            if (parseInt(p4g2bid.value) <= parseInt(p4g2won.value)) {
+                tempResult2 = parseInt(p4g2bid.value) * parseInt(10) + parseInt(p4g2won.value) - parseInt(p4g2bid.value)
+            }
+            p4g2score.value = tempResult2
+        }
+        // Game 3
+        var p4g3bid = document.getElementById("p4g3-bid")
+        var p4g3won = document.getElementById("p4g3-won")
+        var p4g3score = document.getElementById("p4g3-score")
+        if (p4g3bid.value.length > 0 && p4g3won.value.length > 0) {
+            var tempResult3 = 0;
+            if (parseInt(p4g3bid.value) <= parseInt(p4g3won.value)) {
+                tempResult3 = parseInt(p4g3bid.value) * parseInt(10) + parseInt(p4g3won.value) - parseInt(p4g3bid.value)
+            }
+            p4g3score.value = tempResult3
+        }
+        // Game 4
+        var p4g4bid = document.getElementById("p4g4-bid")
+        var p4g4won = document.getElementById("p4g4-won")
+        var p4g4score = document.getElementById("p4g4-score")
+        if (p4g4bid.value.length > 0 && p4g4won.value.length > 0) {
+            var tempResult4 = 0;
+            if (parseInt(p4g4bid.value) <= parseInt(p4g4won.value)) {
+                tempResult4 = parseInt(p4g4bid.value) * parseInt(10) + parseInt(p4g4won.value) - parseInt(p4g4bid.value)
+            }
+            p4g4score.value = tempResult4
+        }
+        // Game 5
+        var p4g5bid = document.getElementById("p4g5-bid")
+        var p4g5won = document.getElementById("p4g5-won")
+        var p4g5score = document.getElementById("p4g5-score")
+        if (p4g5bid.value.length > 0 && p4g5won.value.length > 0) {
+            var tempResult5 = 0;
+            if (parseInt(p4g5bid.value) <= parseInt(p4g5won.value)) {
+                tempResult5 = parseInt(p4g5bid.value) * parseInt(10) + parseInt(p4g5won.value) - parseInt(p4g5bid.value)
+            }
+            p4g5score.value = tempResult5
+        }
+        // Game 6
+        var p4g6bid = document.getElementById("p4g6-bid")
+        var p4g6won = document.getElementById("p4g6-won")
+        var p4g6score = document.getElementById("p4g6-score")
+        if (p4g6bid.value.length > 0 && p4g6won.value.length > 0) {
+            var tempResult6 = 0;
+            if (parseInt(p4g6bid.value) <= parseInt(p4g6won.value)) {
+                tempResult6 = parseInt(p4g6bid.value) * parseInt(10) + parseInt(p4g6won.value) - parseInt(p4g6bid.value)
+            }
+            p4g6score.value = tempResult6
+        }
+        // Game 7
+        var p4g7bid = document.getElementById("p4g7-bid")
+        var p4g7won = document.getElementById("p4g7-won")
+        var p4g7score = document.getElementById("p4g7-score")
+        if (p4g7bid.value.length > 0 && p4g7won.value.length > 0) {
+            var tempResult7 = 0;
+            if (parseInt(p4g7bid.value) <= parseInt(p4g7won.value)) {
+                tempResult7 = parseInt(p4g7bid.value) * parseInt(10) + parseInt(p4g7won.value) - parseInt(p4g7bid.value)
+            }
+            p4g7score.value = tempResult7
+        }
+        // Game 8
+        var p4g8bid = document.getElementById("p4g8-bid")
+        var p4g8won = document.getElementById("p4g8-won")
+        var p4g8score = document.getElementById("p4g8-score")
+        if (p4g8bid.value.length > 0 && p4g8won.value.length > 0) {
+            var tempResult8 = 0;
+            if (parseInt(p4g8bid.value) <= parseInt(p4g8won.value)) {
+                tempResult8 = parseInt(p4g8bid.value) * parseInt(10) + parseInt(p4g8won.value) - parseInt(p4g8bid.value)
+            }
+            p4g8score.value = tempResult8
+        }
+        // Game 9
+        var p4g9bid = document.getElementById("p4g9-bid")
+        var p4g9won = document.getElementById("p4g9-won")
+        var p4g9score = document.getElementById("p4g9-score")
+        if (p4g9bid.value.length > 0 && p4g9won.value.length > 0) {
+            var tempResult9 = 0;
+            if (parseInt(p4g9bid.value) <= parseInt(p4g9won.value)) {
+                tempResult9 = parseInt(p4g9bid.value) * parseInt(10) + parseInt(p4g9won.value) - parseInt(p4g9bid.value)
+            }
+            p4g9score.value = tempResult9
+        }
+        // Game 10
+        var p4g10bid = document.getElementById("p4g10-bid")
+        var p4g10won = document.getElementById("p4g10-won")
+        var p4g10score = document.getElementById("p4g10-score")
+        if (p4g10bid.value.length > 0 && p4g10won.value.length > 0) {
+            var tempResult10 = 0;
+            if (parseInt(p4g10bid.value) <= parseInt(p4g10won.value)) {
+                tempResult10 = parseInt(p4g10bid.value) * parseInt(10) + parseInt(p4g10won.value) - parseInt(p4g10bid.value)
+            }
+            p4g10score.value = tempResult10
+        }
+        
+        // P4 Total
+        p4total.value = (p4g1score.value.length > 0 ? parseInt(p4g1score.value) : parseInt(0)) + 
+                        (p4g2score.value.length > 0 ? parseInt(p4g2score.value) : parseInt(0)) +
+                        (p4g3score.value.length > 0 ? parseInt(p4g3score.value) : parseInt(0)) +
+                        (p4g4score.value.length > 0 ? parseInt(p4g4score.value) : parseInt(0)) +
+                        (p4g5score.value.length > 0 ? parseInt(p4g5score.value) : parseInt(0)) +
+                        (p4g6score.value.length > 0 ? parseInt(p4g6score.value) : parseInt(0)) +
+                        (p4g7score.value.length > 0 ? parseInt(p4g7score.value) : parseInt(0)) +
+                        (p4g8score.value.length > 0 ? parseInt(p4g8score.value) : parseInt(0)) +
+                        (p4g9score.value.length > 0 ? parseInt(p4g9score.value) : parseInt(0)) +
+                        (p4g10score.value.length > 0 ? parseInt(p4g10score.value) : parseInt(0))
+    }
+
+    // Player 5
+    function p5_scores() {
+        var p5total = document.getElementById("p5-total")
+        var tempP5total = 0
+        // Game 1
+        var p5g1bid = document.getElementById("p5g1-bid")
+        var p5g1won = document.getElementById("p5g1-won")
+        var p5g1score = document.getElementById("p5g1-score")
+        if (p5g1bid.value.length > 0 && p5g1won.value.length > 0) {
+            var tempResult1 = 0;
+            if (parseInt(p5g1bid.value) <= parseInt(p5g1won.value)) {
+                tempResult1 = parseInt(p5g1bid.value) * parseInt(10) + parseInt(p5g1won.value) - parseInt(p5g1bid.value)
+            }
+            p5g1score.value = tempResult1
+        }
+        // Game 2
+        var p5g2bid = document.getElementById("p5g2-bid")
+        var p5g2won = document.getElementById("p5g2-won")
+        var p5g2score = document.getElementById("p5g2-score")
+        if (p5g2bid.value.length > 0 && p5g2won.value.length > 0) {
+            var tempResult2 = 0;
+            if (parseInt(p5g2bid.value) <= parseInt(p5g2won.value)) {
+                tempResult2 = parseInt(p5g2bid.value) * parseInt(10) + parseInt(p5g2won.value) - parseInt(p5g2bid.value)
+            }
+            p5g2score.value = tempResult2
+        }
+        // Game 3
+        var p5g3bid = document.getElementById("p5g3-bid")
+        var p5g3won = document.getElementById("p5g3-won")
+        var p5g3score = document.getElementById("p5g3-score")
+        if (p5g3bid.value.length > 0 && p5g3won.value.length > 0) {
+            var tempResult3 = 0;
+            if (parseInt(p5g3bid.value) <= parseInt(p5g3won.value)) {
+                tempResult3 = parseInt(p5g3bid.value) * parseInt(10) + parseInt(p5g3won.value) - parseInt(p5g3bid.value)
+            }
+            p5g3score.value = tempResult3
+        }
+        // Game 4
+        var p5g4bid = document.getElementById("p5g4-bid")
+        var p5g4won = document.getElementById("p5g4-won")
+        var p5g4score = document.getElementById("p5g4-score")
+        if (p5g4bid.value.length > 0 && p5g4won.value.length > 0) {
+            var tempResult4 = 0;
+            if (parseInt(p5g4bid.value) <= parseInt(p5g4won.value)) {
+                tempResult4 = parseInt(p5g4bid.value) * parseInt(10) + parseInt(p5g4won.value) - parseInt(p5g4bid.value)
+            }
+            p5g4score.value = tempResult4
+        }
+        // Game 5
+        var p5g5bid = document.getElementById("p5g5-bid")
+        var p5g5won = document.getElementById("p5g5-won")
+        var p5g5score = document.getElementById("p5g5-score")
+        if (p5g5bid.value.length > 0 && p5g5won.value.length > 0) {
+            var tempResult5 = 0;
+            if (parseInt(p5g5bid.value) <= parseInt(p5g5won.value)) {
+                tempResult5 = parseInt(p5g5bid.value) * parseInt(10) + parseInt(p5g5won.value) - parseInt(p5g5bid.value)
+            }
+            p5g5score.value = tempResult5
+        }
+        // Game 6
+        var p5g6bid = document.getElementById("p5g6-bid")
+        var p5g6won = document.getElementById("p5g6-won")
+        var p5g6score = document.getElementById("p5g6-score")
+        if (p5g6bid.value.length > 0 && p5g6won.value.length > 0) {
+            var tempResult6 = 0;
+            if (parseInt(p5g6bid.value) <= parseInt(p5g6won.value)) {
+                tempResult6 = parseInt(p5g6bid.value) * parseInt(10) + parseInt(p5g6won.value) - parseInt(p5g6bid.value)
+            }
+            p5g6score.value = tempResult6
+        }
+        // Game 7
+        var p5g7bid = document.getElementById("p5g7-bid")
+        var p5g7won = document.getElementById("p5g7-won")
+        var p5g7score = document.getElementById("p5g7-score")
+        if (p5g7bid.value.length > 0 && p5g7won.value.length > 0) {
+            var tempResult7 = 0;
+            if (parseInt(p5g7bid.value) <= parseInt(p5g7won.value)) {
+                tempResult7 = parseInt(p5g7bid.value) * parseInt(10) + parseInt(p5g7won.value) - parseInt(p5g7bid.value)
+            }
+            p5g7score.value = tempResult7
+        }
+        // Game 8
+        var p5g8bid = document.getElementById("p5g8-bid")
+        var p5g8won = document.getElementById("p5g8-won")
+        var p5g8score = document.getElementById("p5g8-score")
+        if (p5g8bid.value.length > 0 && p5g8won.value.length > 0) {
+            var tempResult8 = 0;
+            if (parseInt(p5g8bid.value) <= parseInt(p5g8won.value)) {
+                tempResult8 = parseInt(p5g8bid.value) * parseInt(10) + parseInt(p5g8won.value) - parseInt(p5g8bid.value)
+            }
+            p5g8score.value = tempResult8
+        }
+        // Game 9
+        var p5g9bid = document.getElementById("p5g9-bid")
+        var p5g9won = document.getElementById("p5g9-won")
+        var p5g9score = document.getElementById("p5g9-score")
+        if (p5g9bid.value.length > 0 && p5g9won.value.length > 0) {
+            var tempResult9 = 0;
+            if (parseInt(p5g9bid.value) <= parseInt(p5g9won.value)) {
+                tempResult9 = parseInt(p5g9bid.value) * parseInt(10) + parseInt(p5g9won.value) - parseInt(p5g9bid.value)
+            }
+            p5g9score.value = tempResult9
+        }
+        // Game 10
+        var p5g10bid = document.getElementById("p5g10-bid")
+        var p5g10won = document.getElementById("p5g10-won")
+        var p5g10score = document.getElementById("p5g10-score")
+        if (p5g10bid.value.length > 0 && p5g10won.value.length > 0) {
+            var tempResult10 = 0;
+            if (parseInt(p5g10bid.value) <= parseInt(p5g10won.value)) {
+                tempResult10 = parseInt(p5g10bid.value) * parseInt(10) + parseInt(p5g10won.value) - parseInt(p5g10bid.value)
+            }
+            p5g10score.value = tempResult10
+        }
+        
+        // P5 Total
+        p5total.value = (p5g1score.value.length > 0 ? parseInt(p5g1score.value) : parseInt(0)) + 
+                        (p5g2score.value.length > 0 ? parseInt(p5g2score.value) : parseInt(0)) +
+                        (p5g3score.value.length > 0 ? parseInt(p5g3score.value) : parseInt(0)) +
+                        (p5g4score.value.length > 0 ? parseInt(p5g4score.value) : parseInt(0)) +
+                        (p5g5score.value.length > 0 ? parseInt(p5g5score.value) : parseInt(0)) +
+                        (p5g6score.value.length > 0 ? parseInt(p5g6score.value) : parseInt(0)) +
+                        (p5g7score.value.length > 0 ? parseInt(p5g7score.value) : parseInt(0)) +
+                        (p5g8score.value.length > 0 ? parseInt(p5g8score.value) : parseInt(0)) +
+                        (p5g9score.value.length > 0 ? parseInt(p5g9score.value) : parseInt(0)) +
+                        (p5g10score.value.length > 0 ? parseInt(p5g10score.value) : parseInt(0))
+    }
+
+    // Player 6
+    function p6_scores() {
+        var p6total = document.getElementById("p6-total")
+        var tempP6total = 0
+        // Game 1
+        var p6g1bid = document.getElementById("p6g1-bid")
+        var p6g1won = document.getElementById("p6g1-won")
+        var p6g1score = document.getElementById("p6g1-score")
+        if (p6g1bid.value.length > 0 && p6g1won.value.length > 0) {
+            var tempResult1 = 0;
+            if (parseInt(p6g1bid.value) <= parseInt(p6g1won.value)) {
+                tempResult1 = parseInt(p6g1bid.value) * parseInt(10) + parseInt(p6g1won.value) - parseInt(p6g1bid.value)
+            }
+            p6g1score.value = tempResult1
+        }
+        // Game 2
+        var p6g2bid = document.getElementById("p6g2-bid")
+        var p6g2won = document.getElementById("p6g2-won")
+        var p6g2score = document.getElementById("p6g2-score")
+        if (p6g2bid.value.length > 0 && p6g2won.value.length > 0) {
+            var tempResult2 = 0;
+            if (parseInt(p6g2bid.value) <= parseInt(p6g2won.value)) {
+                tempResult2 = parseInt(p6g2bid.value) * parseInt(10) + parseInt(p6g2won.value) - parseInt(p6g2bid.value)
+            }
+            p6g2score.value = tempResult2
+        }
+        // Game 3
+        var p6g3bid = document.getElementById("p6g3-bid")
+        var p6g3won = document.getElementById("p6g3-won")
+        var p6g3score = document.getElementById("p6g3-score")
+        if (p6g3bid.value.length > 0 && p6g3won.value.length > 0) {
+            var tempResult3 = 0;
+            if (parseInt(p6g3bid.value) <= parseInt(p6g3won.value)) {
+                tempResult3 = parseInt(p6g3bid.value) * parseInt(10) + parseInt(p6g3won.value) - parseInt(p6g3bid.value)
+            }
+            p6g3score.value = tempResult3
+        }
+        // Game 4
+        var p6g4bid = document.getElementById("p6g4-bid")
+        var p6g4won = document.getElementById("p6g4-won")
+        var p6g4score = document.getElementById("p6g4-score")
+        if (p6g4bid.value.length > 0 && p6g4won.value.length > 0) {
+            var tempResult4 = 0;
+            if (parseInt(p6g4bid.value) <= parseInt(p6g4won.value)) {
+                tempResult4 = parseInt(p6g4bid.value) * parseInt(10) + parseInt(p6g4won.value) - parseInt(p6g4bid.value)
+            }
+            p6g4score.value = tempResult4
+        }
+        // Game 5
+        var p6g5bid = document.getElementById("p6g5-bid")
+        var p6g5won = document.getElementById("p6g5-won")
+        var p6g5score = document.getElementById("p6g5-score")
+        if (p6g5bid.value.length > 0 && p6g5won.value.length > 0) {
+            var tempResult5 = 0;
+            if (parseInt(p6g5bid.value) <= parseInt(p6g5won.value)) {
+                tempResult5 = parseInt(p6g5bid.value) * parseInt(10) + parseInt(p6g5won.value) - parseInt(p6g5bid.value)
+            }
+            p6g5score.value = tempResult5
+        }
+        // Game 6
+        var p6g6bid = document.getElementById("p6g6-bid")
+        var p6g6won = document.getElementById("p6g6-won")
+        var p6g6score = document.getElementById("p6g6-score")
+        if (p6g6bid.value.length > 0 && p6g6won.value.length > 0) {
+            var tempResult6 = 0;
+            if (parseInt(p6g6bid.value) <= parseInt(p6g6won.value)) {
+                tempResult6 = parseInt(p6g6bid.value) * parseInt(10) + parseInt(p6g6won.value) - parseInt(p6g6bid.value)
+            }
+            p6g6score.value = tempResult6
+        }
+        // Game 7
+        var p6g7bid = document.getElementById("p6g7-bid")
+        var p6g7won = document.getElementById("p6g7-won")
+        var p6g7score = document.getElementById("p6g7-score")
+        if (p6g7bid.value.length > 0 && p6g7won.value.length > 0) {
+            var tempResult7 = 0;
+            if (parseInt(p6g7bid.value) <= parseInt(p6g7won.value)) {
+                tempResult7 = parseInt(p6g7bid.value) * parseInt(10) + parseInt(p6g7won.value) - parseInt(p6g7bid.value)
+            }
+            p6g7score.value = tempResult7
+        }
+        // Game 8
+        var p6g8bid = document.getElementById("p6g8-bid")
+        var p6g8won = document.getElementById("p6g8-won")
+        var p6g8score = document.getElementById("p6g8-score")
+        if (p6g8bid.value.length > 0 && p6g8won.value.length > 0) {
+            var tempResult8 = 0;
+            if (parseInt(p6g8bid.value) <= parseInt(p6g8won.value)) {
+                tempResult8 = parseInt(p6g8bid.value) * parseInt(10) + parseInt(p6g8won.value) - parseInt(p6g8bid.value)
+            }
+            p6g8score.value = tempResult8
+        }
+        // Game 9
+        var p6g9bid = document.getElementById("p6g9-bid")
+        var p6g9won = document.getElementById("p6g9-won")
+        var p6g9score = document.getElementById("p6g9-score")
+        if (p6g9bid.value.length > 0 && p6g9won.value.length > 0) {
+            var tempResult9 = 0;
+            if (parseInt(p6g9bid.value) <= parseInt(p6g9won.value)) {
+                tempResult9 = parseInt(p6g9bid.value) * parseInt(10) + parseInt(p6g9won.value) - parseInt(p6g9bid.value)
+            }
+            p6g9score.value = tempResult9
+        }
+        // Game 10
+        var p6g10bid = document.getElementById("p6g10-bid")
+        var p6g10won = document.getElementById("p6g10-won")
+        var p6g10score = document.getElementById("p6g10-score")
+        if (p6g10bid.value.length > 0 && p6g10won.value.length > 0) {
+            var tempResult10 = 0;
+            if (parseInt(p6g10bid.value) <= parseInt(p6g10won.value)) {
+                tempResult10 = parseInt(p6g10bid.value) * parseInt(10) + parseInt(p6g10won.value) - parseInt(p6g10bid.value)
+            }
+            p6g10score.value = tempResult10
+        }
+        
+        // P6 Total
+        p6total.value = (p6g1score.value.length > 0 ? parseInt(p6g1score.value) : parseInt(0)) + 
+                        (p6g2score.value.length > 0 ? parseInt(p6g2score.value) : parseInt(0)) +
+                        (p6g3score.value.length > 0 ? parseInt(p6g3score.value) : parseInt(0)) +
+                        (p6g4score.value.length > 0 ? parseInt(p6g4score.value) : parseInt(0)) +
+                        (p6g5score.value.length > 0 ? parseInt(p6g5score.value) : parseInt(0)) +
+                        (p6g6score.value.length > 0 ? parseInt(p6g6score.value) : parseInt(0)) +
+                        (p6g7score.value.length > 0 ? parseInt(p6g7score.value) : parseInt(0)) +
+                        (p6g8score.value.length > 0 ? parseInt(p6g8score.value) : parseInt(0)) +
+                        (p6g9score.value.length > 0 ? parseInt(p6g9score.value) : parseInt(0)) +
+                        (p6g10score.value.length > 0 ? parseInt(p6g10score.value) : parseInt(0))
+    }
+
+</script>
+
+</html>
